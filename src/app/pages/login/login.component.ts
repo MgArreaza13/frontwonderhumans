@@ -4,8 +4,8 @@ import { Authentication } from 'src/app/shared/models/authentication';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { Router } from '@angular/router';
-// import { NgxUiLoaderService } from 'ngx-ui-loader';
-// import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from "ngx-spinner";
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    // private toastr: ToastrService,
-    // private ngxService: NgxUiLoaderService,
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService,
     private lsService: LocalStorageService,
     private router: Router
   ) { }
@@ -52,10 +52,10 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   onSubmit() {
-    // this.ngxService.start();
+    this.spinner.show();
     this.submitted = true;
     if (this.loginForm.invalid) {
-      // this.ngxService.stop();
+      this.spinner.hide();
       return;
     }
 
@@ -73,11 +73,11 @@ export class LoginComponent implements OnInit {
         this.lsService.setValue('first_name', data.first_name);
         this.lsService.setValue('username', data.username);
         this.lsService.setValue('email', data.email);
-        // this.ngxService.stop();
-        // this.toastr.success('Bienvenido', 'login correcto');
+        this.spinner.hide();
+        this.toastr.success('Welcome', 'login success');
         this.router.navigateByUrl('/user-profile')
       },
-      err => {console.log(err); }
+      err => {console.log(err); this.toastr.error('Error', err.error.detail); this.spinner.hide();}
     );
   }
 

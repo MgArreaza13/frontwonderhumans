@@ -19,33 +19,10 @@ import { HomeModule } from './pages/home/home.module';
 import { LoginComponent } from './pages/login/login.component';
 // import { ToastrModule } from 'ngx-toastr';
 import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
-const ngxUiLoaderConfig: NgxUiLoaderConfig = {
-  "bgsColor": "red",
-  "bgsOpacity": 0.5,
-  "bgsPosition": "bottom-right",
-  "bgsSize": 60,
-  "bgsType": "ball-spin-clockwise",
-  "blur": 5,
-  "fgsColor": "#304064",
-  "fgsPosition": "center-center",
-  "fgsSize": 60,
-  "fgsType": "ball-spin-clockwise",
-  "gap": 24,
-  "logoPosition": "center-center",
-  "logoSize": 120,
-  "logoUrl": "",
-  "masterLoaderId": "master",
-  "overlayBorderRadius": "0",
-  "overlayColor": "rgba(40, 40, 40, 0.8)",
-  "pbColor": "red",
-  "pbDirection": "ltr",
-  "pbThickness": 3,
-  "hasProgressBar": true,
-  "text": "Cargando",
-  "textColor": "#FFFFFF",
-  "textPosition": "center-center",
-}
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +39,13 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     RouterModule,
     CoreModule,
     SharedModule,
-    // NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    NgxSpinnerModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }), // ToastrModule added
     HomeModule,
     AppRoutingModule,
   ],
