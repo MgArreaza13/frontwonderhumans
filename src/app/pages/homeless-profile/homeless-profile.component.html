@@ -21,30 +21,73 @@
               <div class="btn-wrapper text-center">
                 <img
                   src="https://images.unsplash.com/photo-1519430044529-9a9a57177865?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=761&q=80"
-                  alt="" class="img-fluid rounded shadow-lg">
+                  alt="" class="img-fluid rounded-circle shadow-lg">
               </div>
             </div>
-            <div class="card-body px-lg-5">
-              <div class="text-center text-muted mb-4">
-                <small>Basic information</small>
-              </div>
-              <div class="text-center ">
-                <h3>Example Name
-                  <span class="font-weight-light">, 45</span>
-                </h3>
-                <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Bucharest, Romania</div>
-                <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Quam eum at reiciendis</div>
-                <div><i class="ni education_hat mr-2"></i>Consectetur adipisicing elit</div>
-              </div>
-              <div class=" py-5 border-top text-center">
-                <div class="row justify-content-center">
-                  <div class="col-lg-9">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam eum at reiciendis, eos possimus
-                      beatae debitis laborum animi adipisci natus quaerat esse iusto iure magni minima? Placeat quaerat
-                      nostrum blanditiis.</p>
-                    <button class="btn btn-warning" (click)="open(classic)">Show Events</button>
-                  </div>
+            <div class="card-body px-lg-2">
+              <div class="col-12">
+                <!-- Tabs with icons -->
+                <div class="mb-3">
+                  <h5 class="text-uppercase font-weight-bold text-center">Example Name</h5>
+                  <small class="font-weight-bold text-center d-block">Example - Example</small>
                 </div>
+                <ngb-tabset [justify]="'center'" class="custom-tab-content flex-column flex-md-row" type="pills"
+                  id="navCustom2">
+                  <ngb-tab>
+                    <ng-template ngbTabTitle>
+                      <i class="ni ni-books mr-2"></i> My Story
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                      <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam magnam,
+                        possimus perspiciatis quasi corrupti aspernatur praesentium totam eveniet! Voluptatem iste minus
+                        deleniti voluptatum alias soluta iure amet officia quibusdam reiciendis.</p>
+                      <div class="review p-3">
+                        <div class="row d-flex">
+                          <div class="profile-pic"><img src="https://i.imgur.com/Mcd6HIg.jpg" width="60px"
+                              height="60px"></div>
+                          <div class="d-flex flex-column pl-3">
+                            <h4>Emily</h4>
+                            <p class="grey-text">30 min ago</p>
+                          </div>
+                        </div>
+                        <div class="row pb-3">
+                          <div class="fa fa-circle green-dot my-auto rating-dot"></div>
+                          <div class="fa fa-circle green-dot my-auto rating-dot"></div>
+                          <div class="fa fa-circle green-dot my-auto rating-dot"></div>
+                          <div class="fa fa-circle green-dot my-auto rating-dot"></div>
+                          <div class="fa fa-circle green-dot my-auto rating-dot"></div>
+                          <div class="green-text">
+                            <h5 class="mb-0 pl-3">Example</h5>
+                          </div>
+                        </div>
+                        <div class="row pb-3">
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </ngb-tab>
+                  <ngb-tab>
+                    <ng-template ngbTabTitle>
+                      <i class="ni ni-briefcase-24 mr-2"></i> Portfolio
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                      <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam magnam,
+                        possimus perspiciatis quasi corrupti aspernatur praesentium totam eveniet! Voluptatem iste minus
+                        deleniti voluptatum alias soluta iure amet officia quibusdam reiciendis..</p>
+                    </ng-template>
+                  </ngb-tab>
+                  <ngb-tab>
+                    <ng-template ngbTabTitle>
+                      <i class="ni ni-money-coins mr-2"></i> Donations
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                      <p class="description">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt
+                        tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles
+                        vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
+                        <button class="btn btn-warning float-right" (click)="open(classic)">Show more</button>
+                    </ng-template>
+                  </ngb-tab>
+                </ngb-tabset>
               </div>
             </div>
           </div>
@@ -95,7 +138,8 @@
                       <th scope="row">
                         <div class="media align-items-center">
                           <a href="#" class="avatar rounded-circle mr-3">
-                            <img alt="Image placeholder" src="https://images.unsplash.com/photo-1519430044529-9a9a57177865?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=761&q=80">
+                            <img alt="Image placeholder"
+                              src="https://images.unsplash.com/photo-1519430044529-9a9a57177865?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=761&q=80">
                           </a>
                           <div class="media-body">
                             <span class="mb-0 text-sm">Event Example</span>
@@ -127,7 +171,8 @@
                       <th scope="row">
                         <div class="media align-items-center">
                           <a href="#" class="avatar rounded-circle mr-3">
-                            <img alt="Image placeholder" src="https://images.unsplash.com/photo-1519430044529-9a9a57177865?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=761&q=80">
+                            <img alt="Image placeholder"
+                              src="https://images.unsplash.com/photo-1519430044529-9a9a57177865?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=761&q=80">
                           </a>
                           <div class="media-body">
                             <span class="mb-0 text-sm">Event Example</span>
@@ -160,7 +205,8 @@
                       <th scope="row">
                         <div class="media align-items-center">
                           <a href="#" class="avatar rounded-circle mr-3">
-                            <img alt="Image placeholder" src="https://images.unsplash.com/photo-1519430044529-9a9a57177865?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=761&q=80">
+                            <img alt="Image placeholder"
+                              src="https://images.unsplash.com/photo-1519430044529-9a9a57177865?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=761&q=80">
                           </a>
                           <div class="media-body">
                             <span class="mb-0 text-sm">Event Example</span>
@@ -192,7 +238,8 @@
                       <th scope="row">
                         <div class="media align-items-center">
                           <a href="#" class="avatar rounded-circle mr-3">
-                            <img alt="Image placeholder" src="https://images.unsplash.com/photo-1519430044529-9a9a57177865?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=761&q=80">
+                            <img alt="Image placeholder"
+                              src="https://images.unsplash.com/photo-1519430044529-9a9a57177865?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=761&q=80">
                           </a>
                           <div class="media-body">
                             <span class="mb-0 text-sm">Event Example</span>
@@ -224,7 +271,8 @@
                       <th scope="row">
                         <div class="media align-items-center">
                           <a href="#" class="avatar rounded-circle mr-3">
-                            <img alt="Image placeholder" src="https://images.unsplash.com/photo-1519430044529-9a9a57177865?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=761&q=80">
+                            <img alt="Image placeholder"
+                              src="https://images.unsplash.com/photo-1519430044529-9a9a57177865?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=761&q=80">
                           </a>
                           <div class="media-body">
                             <span class="mb-0 text-sm">Event Example</span>
@@ -277,25 +325,25 @@
                     </ngb-tab>
                     <ngb-tab>
                       <ng-template ngbTabTitle>
-                          <span class="nav-link-icon d-block"><i class="ni ni-satisfied"></i>Actividad 3</span>
+                        <span class="nav-link-icon d-block"><i class="ni ni-satisfied"></i>Actividad 3</span>
                       </ng-template>
                     </ngb-tab>
                     <ngb-tab>
                       <ng-template ngbTabTitle>
-                          <span class="nav-link-icon d-block"><i class="ni ni-satisfied"></i>Actividad 4</span>
+                        <span class="nav-link-icon d-block"><i class="ni ni-satisfied"></i>Actividad 4</span>
                       </ng-template>
                     </ngb-tab>
                     <ngb-tab>
                       <ng-template ngbTabTitle>
-                          <span class="nav-link-icon d-block"><i class="ni ni-satisfied"></i>Actividad 5</span>
+                        <span class="nav-link-icon d-block"><i class="ni ni-satisfied"></i>Actividad 5</span>
                       </ng-template>
                     </ngb-tab>
                     <ngb-tab>
                       <ng-template ngbTabTitle>
-                          <span class="nav-link-icon d-block"><i class="ni ni-satisfied"></i>Actividad 6</span>
+                        <span class="nav-link-icon d-block"><i class="ni ni-satisfied"></i>Actividad 6</span>
                       </ng-template>
                     </ngb-tab>
-                </ngb-tabset>
+                  </ngb-tabset>
                 </div>
                 <div class="col-6">
                   <form>
@@ -305,9 +353,9 @@
                         <div class="form-group has-success">
                           <input type="text" placeholder="55555555555555" class="form-control is-valid">
                         </div>
-                      </div>                  
+                      </div>
                     </div>
-                    <div class="row">                  
+                    <div class="row">
                       <div class="col-md-12">
                         <label for="">Expired date</label>
                         <div class="form-group has-danger">
@@ -315,7 +363,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="row">                  
+                    <div class="row">
                       <div class="col-md-12">
                         <label for="">CVC</label>
                         <div class="form-group has-danger">
@@ -337,4 +385,5 @@
       </div>
     </div>
   </ng-template>
+
 </main>

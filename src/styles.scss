@@ -34,3 +34,31 @@
         margin-bottom: 10px;
     }
 }
+//NavCustom
+#navCustom2{
+  .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: #f4f5f7 !important;
+    color: #f44336 !important;
+    border: 3px solid transparent !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid #F44336 !important;
+   // border-top-color: transparent;
+      
+    }
+    .nav-link {    
+      color: #e86a61 !important;
+      border: 1px solid #F44336 !important;      
+    }
+    .nav-tabs{
+      border-bottom: 0 !important;
+    }
+    .nav-pills-circle .nav-link {
+      text-align: center;
+      height: 95px !important;
+      width: 95px !important;;
+      padding: 0;
+      line-height: 90px !important;;
+      border-radius: 50%;
+      margin-bottom: 10px;
+  }
+}
