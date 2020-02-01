@@ -22,6 +22,8 @@ import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { HomelessProfileComponent } from './pages/homeless-profile/homeless-profile.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { ToastrModule } from 'ngx-toastr';
     ProfileComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    EditProfileComponent,
+    HomelessProfileComponent
   ],
   imports: [
     BrowserModule,

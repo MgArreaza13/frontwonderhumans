@@ -8,3 +8,29 @@
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
 @import '~ngx-toastr/toastr-bs4-alert';
+
+//NavCustom
+#navCustom{
+    .nav-link.active, .nav-pills .show > .nav-link {
+        background-color: #F44336 !important;
+        color: white !important;        
+        border: 3px solid #FF5722 !important;
+        
+      }
+      .nav-link {    
+        color: #e86a61 !important;
+        border: 1px solid #F44336 !important;      
+      }
+      .nav-tabs{
+        border-bottom: 0 !important;
+      }
+      .nav-pills-circle .nav-link {
+        text-align: center;
+        height: 95px !important;
+        width: 95px !important;;
+        padding: 0;
+        line-height: 90px !important;;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+}
