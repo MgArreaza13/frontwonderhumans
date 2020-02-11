@@ -78,13 +78,27 @@
         </li>
       </ul> -->
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-        <li class="nav-item">
-          <a class="nav-link nav-link-icon"  target="_blank" data-toggle="tooltip" >
-            <i class="fa fa-facebook-square"></i>
-            <span class="nav-link-inner--text d-lg-none">Facebook</span>
+        <li class="nav-item" *ngIf="!user" >
+          <a class="nav-link nav-link-icon" [routerLink]="['/login']" data-toggle="tooltip" >
+            <span class="nav-link-inner--text d-lg-none">Login</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="user">
+          <a class="nav-link nav-link-icon" [routerLink]="['/user-profile']" data-toggle="tooltip" >
+            <span class="nav-link-inner--text d-lg-none">Profile</span>
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="user">
+          <a class="nav-link nav-link-icon" [routerLink]="['/new-homeless']" data-toggle="tooltip" >
+            <span class="nav-link-inner--text d-lg-none">New Register Homeless</span>
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="!user">
+          <a class="nav-link nav-link-icon" [routerLink]="['/register']" data-toggle="tooltip" >
+            <span class="nav-link-inner--text d-lg-none">Register</span>
+          </a>
+        </li>
+        <!-- <li class="nav-item">
           <a class="nav-link nav-link-icon"  target="_blank" data-toggle="tooltip" >
             <i class="fa fa-instagram"></i>
             <span class="nav-link-inner--text d-lg-none">Instagram</span>
@@ -95,11 +109,11 @@
             <i class="fa fa-twitter-square"></i>
             <span class="nav-link-inner--text d-lg-none">Twitter</span>
           </a>
-        </li> 
-        <li class="nav-item" >
+        </li>  -->
+        <li *ngIf="user"  class="nav-item" >
           <button class="nav-link nav-link-icon btn btn-icon btn-3 btn-secondary btn-sm" type="button" placement="bottom" ngbTooltip="Cerrar Sesión" style="padding: 0;
           color: brown;">
-            <span class="btn-inner--text"><i class="ni ni-button-power"></i></span>
+            <span class="btn-inner--text"><i class="ni ni-button-power">Logout</i></span>
           </button>
        </li>   
       </ul>

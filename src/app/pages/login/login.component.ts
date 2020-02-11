@@ -1,3 +1,4 @@
+import { User } from 'src/app/shared/models/user';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Authentication } from 'src/app/shared/models/authentication';
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   focus;
   focus1;
   public loginForm: FormGroup;
+  public user: User = {};
   public auth: Authentication = {};
   public submitted = false;
   public loading = false;
@@ -67,12 +69,13 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.auth).subscribe(
       (data: any) => {
         console.log(data);
-        this.lsService.setValue('token',data.token);
-        this.lsService.setValue('id', data.id);
-        this.lsService.setValue('last_name',data.last_name);
-        this.lsService.setValue('first_name', data.first_name);
-        this.lsService.setValue('username', data.username);
-        this.lsService.setValue('email', data.email);
+        this.user.id = data.id;
+        this.user.token = data.token;
+        this.user.first_name = data.first_name;
+        this.user.last_name = data.last_name;
+        this.user.username = data.username;
+        this.user.email = data.email;
+        this.lsService.setValue('wonderHumanUser', JSON.stringify(this.user));
         this.spinner.hide();
         this.toastr.success('Welcome', 'login success');
         this.router.navigateByUrl('/user-profile')

@@ -1,3 +1,4 @@
+import { User } from 'src/app/shared/models/user';
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -9,7 +10,8 @@ export class RequestInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Get token
-    const token = this.lsService.getValue('token');
+    const user: User = JSON.parse(localStorage.getItem('wonderHumanUser'));
+    const token = (user)? user.token: null;
 
     // Set Headers
     if (token) {

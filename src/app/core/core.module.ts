@@ -15,6 +15,8 @@ import { AuthGuard } from './guards/auth.guard';
 // Services
 import { LocalStorageService } from './services/local-storage.service';
 import { AuthService } from './services/auth.service';
+import { HomelessService } from './services/homeless.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   imports: [
@@ -26,7 +28,9 @@ import { AuthService } from './services/auth.service';
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     AuthGuard,
+    UserService,
     AuthService,
+    HomelessService,
     LocalStorageService,
   ],
 })

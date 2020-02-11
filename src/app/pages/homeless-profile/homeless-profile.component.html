@@ -28,8 +28,12 @@
               <div class="col-12">
                 <!-- Tabs with icons -->
                 <div class="mb-3">
-                  <h5 class="text-uppercase font-weight-bold text-center">Example Name</h5>
-                  <small class="font-weight-bold text-center d-block">Example - Example</small>
+                  <h5 class="text-uppercase font-weight-bold text-center">{{homelessProfile?.firstName}} {{homelessProfile?.lastName}}</h5>
+                  <small *ngIf="homelessProfile?.email" class="font-weight-bold text-center d-block">Email: {{homelessProfile?.email}}</small>
+                  <small *ngIf="homelessProfile?.phone"  class="font-weight-bold text-center d-block">Phone Number: {{homelessProfile?.phone}}</small>
+                  <small *ngIf="homelessProfile?.dateOfBirth"  class="font-weight-bold text-center d-block">Date of Birth: {{homelessProfile?.dateOfBirth | date}}</small>
+                  <small *ngIf="homelessProfile?.occupation"  class="font-weight-bold text-center d-block">Occupation: {{homelessProfile?.occupation}}</small>
+                
                 </div>
                 <ngb-tabset [justify]="'center'" class="custom-tab-content flex-column flex-md-row" type="pills"
                   id="navCustom2">
@@ -38,9 +42,7 @@
                       <i class="ni ni-books mr-2"></i> My Story
                     </ng-template>
                     <ng-template ngbTabContent>
-                      <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam magnam,
-                        possimus perspiciatis quasi corrupti aspernatur praesentium totam eveniet! Voluptatem iste minus
-                        deleniti voluptatum alias soluta iure amet officia quibusdam reiciendis.</p>
+                      <p class="description">{{homelessProfile?.aboutYou}}</p>
                       <div class="review p-3">
                         <div class="row d-flex">
                           <div class="profile-pic"><img src="https://i.imgur.com/Mcd6HIg.jpg" width="60px"

@@ -1,4 +1,6 @@
-import { Component, OnInit, Inject, Renderer, ElementRef, ViewChild, HostListener } from '@angular/core';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { User } from 'src/app/shared/models/user';
+import { Component, OnInit, Inject, Renderer, ElementRef, ViewChild, HostListener, DoCheck } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
@@ -15,10 +17,16 @@ var navbarHeight = 0;
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, DoCheck {
     private _router: Subscription;
-
-    constructor( private renderer : Renderer, private router: Router, @Inject(DOCUMENT,) private document: any, private element : ElementRef, public location: Location) {}
+    public user;
+    constructor( 
+        private renderer : Renderer,
+        private router: Router, @Inject(DOCUMENT,) 
+        private document: any, private element : ElementRef, 
+        private authService: AuthService,
+        public location: Location) {}
+    
     @HostListener('window:scroll', ['$event'])
     hasScrolled() {
 
@@ -72,5 +80,9 @@ export class AppComponent implements OnInit {
           });
       });
       this.hasScrolled();
+    }
+
+    ngDoCheck(): void {
+        this.user = this.authService.currentUserValue;
     }
 }

@@ -1,3 +1,5 @@
+import { HomelessService } from './../../core/services/homeless.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
@@ -9,10 +11,18 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class HomelessProfileComponent implements OnInit {
   closeResult: string;
-
-  constructor(private modalService: NgbModal) { }
+  private idHomeless;
+  private homelessProfile;
+  constructor(
+    private modalService: NgbModal,
+    private homelessService: HomelessService,
+    private route: ActivatedRoute
+    ) {
+    this.idHomeless = this.route.snapshot.paramMap.get('idHomeless');
+   }
 
   ngOnInit() {
+    this.getProfile(this.idHomeless);
   }
 
   open(classic) {
@@ -26,5 +36,18 @@ export class HomelessProfileComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+
+  getProfile(id: number) {
+    this.homelessService.getHomelessProfile(id).subscribe(
+      (data) => {
+        console.log(data);
+        this.homelessProfile = data;
+      },
+      error => {
+        console.log(error)
+      }
+    )
   }
 }

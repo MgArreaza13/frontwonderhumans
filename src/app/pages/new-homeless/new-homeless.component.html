@@ -18,7 +18,7 @@
       </svg>
     </div>
   </section>
-  <section class="section">
+  <section class="section" *ngIf="newHomelessForm" >
     <div class="container">
       <div class="card card-profile shadow mt--300">
         <div class="px-4">
@@ -32,7 +32,7 @@
             </div>
 
           </div>
-          <form *ngIf="profileForm" [formGroup]="profileForm" >
+          <form role="form" [formGroup]="newHomelessForm" (ngSubmit)="onSubmit()">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
@@ -118,15 +118,14 @@
             </div>
             <div class="row">
               <label for="">Acerca de ti</label>
-              <textarea formControlName="aboutYou" class="form-control form-control-alternative" rows="3"
-                placeholder="Write something here"></textarea>
+              <textarea formControlName="aboutYou" class="form-control form-control-alternative" rows="3" placeholder="Write something here"></textarea>
             </div>
             <div class="row mt-5 mb-5 float-right">
-              <button type="button" class="btn btn-success">Guardar</button>
+              <button type="submit" class="btn btn-success">Guardar</button>
             </div>
           </form>
-        </div>
       </div>
+    </div>
     </div>
   </section>
 </main>

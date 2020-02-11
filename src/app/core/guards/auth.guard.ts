@@ -9,11 +9,11 @@ export class AuthGuard implements CanActivate {
     private lsService: LocalStorageService) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const currentUser = this.lsService.getValue('token');
+    const currentUser = this.lsService.getValue('wonderHumanUser');
     if (currentUser) {
       return true;
     } else {
-      this.router.navigate(['/auth/login']);
+      this.router.navigate(['/login']);
       return false;
     }
   }

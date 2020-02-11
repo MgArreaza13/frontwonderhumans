@@ -1,3 +1,4 @@
+import { NewHomelessComponent } from './pages/new-homeless/new-homeless.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -35,6 +36,7 @@ import { HomelessProfileComponent } from './pages/homeless-profile/homeless-prof
     FooterComponent,
     LoginComponent,
     EditProfileComponent,
+    NewHomelessComponent,
     HomelessProfileComponent
   ],
   imports: [
