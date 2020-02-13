@@ -73,9 +73,14 @@
                       <i class="ni ni-briefcase-24 mr-2"></i> Portfolio
                     </ng-template>
                     <ng-template ngbTabContent>
-                      <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam magnam,
-                        possimus perspiciatis quasi corrupti aspernatur praesentium totam eveniet! Voluptatem iste minus
-                        deleniti voluptatum alias soluta iure amet officia quibusdam reiciendis..</p>
+                      <div class="row">
+                        <h3 class="text-center w-100">Portfolio</h3>
+                      </div>
+                      <div class="row">                        
+                        <div class="col-sm" *ngFor="let image of album; let i=index">
+                        <img [src]="image.thumb" (click)="openM(i)" class="img-portfolio"/>
+                        </div>                        
+                      </div>
                     </ng-template>
                   </ngb-tab>
                   <ngb-tab>

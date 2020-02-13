@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { HomelessProfileComponent } from './pages/homeless-profile/homeless-profile.component';
+import { LightboxModule } from 'ngx-lightbox';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { HomelessProfileComponent } from './pages/homeless-profile/homeless-prof
     }), // ToastrModule added
     HomeModule,
     AppRoutingModule,
+    LightboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

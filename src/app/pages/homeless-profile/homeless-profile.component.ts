@@ -2,6 +2,7 @@ import { HomelessService } from './../../core/services/homeless.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Lightbox } from 'ngx-lightbox';
 
 
 @Component({
@@ -13,13 +14,20 @@ export class HomelessProfileComponent implements OnInit {
   closeResult: string;
   private idHomeless;
   private homelessProfile;
+  name = 'Angular';
+  album: any = [];
   constructor(
     private modalService: NgbModal,
     private homelessService: HomelessService,
-    private route: ActivatedRoute
-    ) {
+    private route: ActivatedRoute,
+    private _lightbox: Lightbox,
+  ) {
     this.idHomeless = this.route.snapshot.paramMap.get('idHomeless');
-   }
+    this.album.push({ 'src': 'https://images.unsplash.com/photo-1581501171910-a6394cff12b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', 'caption': 'Imag1', 'thumb': 'https://images.unsplash.com/photo-1581501171910-a6394cff12b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80' });
+    this.album.push({ 'src': 'https://images.unsplash.com/photo-1581501171910-a6394cff12b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', 'caption': 'Imag1', 'thumb': 'https://images.unsplash.com/photo-1581501171910-a6394cff12b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80' });
+    this.album.push({ 'src': 'https://images.unsplash.com/photo-1581501171910-a6394cff12b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', 'caption': 'Imag1', 'thumb': 'https://images.unsplash.com/photo-1581501171910-a6394cff12b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80' });
+    this.album.push({ 'src': 'https://images.unsplash.com/photo-1581501171910-a6394cff12b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', 'caption': 'Imag1', 'thumb': 'https://images.unsplash.com/photo-1581501171910-a6394cff12b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80' });
+  }
 
   ngOnInit() {
     this.getProfile(this.idHomeless);
@@ -49,5 +57,13 @@ export class HomelessProfileComponent implements OnInit {
         console.log(error)
       }
     )
+  }
+
+  openM(index: number): void {
+    this._lightbox.open(this.album, index);
+  }
+
+  close(): void {
+    this._lightbox.close();
   }
 }

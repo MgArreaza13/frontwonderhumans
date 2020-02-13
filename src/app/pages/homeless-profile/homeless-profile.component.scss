@@ -1,95 +1,106 @@
 .img-fluid {
-    max-width: 9rem;
-    width: 9rem;
-    height: 9rem;
-    object-fit: cover;
+  max-width: 9rem;
+  width: 9rem;
+  height: 9rem;
+  object-fit: cover;
 }
-.modal-dialog .modal-dialog-centered{
-    min-width: 58rem !important;
+.modal-dialog .modal-dialog-centered {
+  min-width: 58rem !important;
 }
 .bg-gradient-default {
-    background: linear-gradient(150deg, #cf3a9e 15%, #ff6240 70%, #fbaa4f 94%) !important;
+  background: linear-gradient(
+    150deg,
+    #cf3a9e 15%,
+    #ff6240 70%,
+    #fbaa4f 94%
+  ) !important;
 }
 .sm-text {
-    font-size: 10px;
-    letter-spacing: 1px
+  font-size: 10px;
+  letter-spacing: 1px;
 }
 
 .sm-text-1 {
-    font-size: 14px
+  font-size: 14px;
 }
 
 .green-tab {
-    background-color: #00C853;
-    color: #fff;
-    border-radius: 5px;
-    padding: 5px 3px 5px 3px
+  background-color: #00c853;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 3px 5px 3px;
 }
 
 .btn-red {
-    background-color: #E64A19;
-    color: #fff;
-    border-radius: 20px;
-    border: none;
-    outline: none
+  background-color: #e64a19;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  outline: none;
 }
 
 .btn-red:hover {
-    background-color: #BF360C
+  background-color: #bf360c;
 }
 
 .btn-red:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    outline-width: 0
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline-width: 0;
 }
 
 .round-icon {
-    font-size: 40px;
-    padding-bottom: 10px
+  font-size: 40px;
+  padding-bottom: 10px;
 }
 
 .fa-circle {
-    font-size: 10px;
-    color: #EEEEEF
+  font-size: 10px;
+  color: #eeeeef;
 }
 
 .green-dot {
-    color: #4CAF50
+  color: #4caf50;
 }
 
 .red-dot {
-    color: #E64A19
+  color: #e64a19;
 }
 
 .yellow-dot {
-    color: #FFD54F
+  color: #ffd54f;
 }
 
 .grey-text {
-    color: #BDBDBD
+  color: #bdbdbd;
 }
 
 .green-text {
-    color: #4CAF50
+  color: #4caf50;
 }
 
 .block {
-    border-right: 1px solid #F5EEEE;
-    border-top: 1px solid #F5EEEE;
-    border-bottom: 1px solid #F5EEEE
+  border-right: 1px solid #f5eeee;
+  border-top: 1px solid #f5eeee;
+  border-bottom: 1px solid #f5eeee;
 }
 
 .profile-pic img {
-    border-radius: 50%
+  border-radius: 50%;
 }
 
 .rating-dot {
-    letter-spacing: 5px
+  letter-spacing: 5px;
 }
 
 .via {
-    border-radius: 20px;
-    height: 28px
+  border-radius: 20px;
+  height: 28px;
+}
+.img-portfolio {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 1rem;
 }
