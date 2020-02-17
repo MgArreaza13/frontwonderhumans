@@ -1,3 +1,4 @@
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { NewHomelessComponent } from './pages/new-homeless/new-homeless.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
@@ -26,6 +27,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { HomelessProfileComponent } from './pages/homeless-profile/homeless-profile.component';
 import { LightboxModule } from 'ngx-lightbox';
+import { QrReaderComponent } from './pages/qr-reader/qr-reader.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import { LightboxModule } from 'ngx-lightbox';
     LoginComponent,
     EditProfileComponent,
     NewHomelessComponent,
-    HomelessProfileComponent
+    HomelessProfileComponent,
+    QrReaderComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +50,7 @@ import { LightboxModule } from 'ngx-lightbox';
     RouterModule,
     CoreModule,
     SharedModule,
+    ZXingScannerModule,
     NgxSpinnerModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({

@@ -12,11 +12,13 @@ import { LoginComponent } from './pages/login/login.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { HomelessProfileComponent } from './pages/homeless-profile/homeless-profile.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { QrReaderComponent } from './pages/qr-reader/qr-reader.component';
 
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
     { path: 'user-profile',     component: ProfileComponent, canActivate: [AuthGuard] },
+    { path: 'qr-reader',     component: QrReaderComponent, canActivate: [AuthGuard] },
     { path: 'edit-profile',     component: EditProfileComponent, canActivate: [AuthGuard] },
     { path: 'new-homeless',     component: NewHomelessComponent, canActivate: [AuthGuard] },
     { path: 'homeless-profile/:idHomeless', component: HomelessProfileComponent, canActivate: [AuthGuard] },
