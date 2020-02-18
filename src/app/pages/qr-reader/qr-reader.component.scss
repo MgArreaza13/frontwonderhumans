@@ -14,10 +14,28 @@
         top: 0;
         width: 100%;
         .area {
-          height: 200px;
-          width: 200px;
-          border: 2px solid red;
-        }
+          height: 75%;
+          width: 60%;
+          border: 2px solid #ffffffb8;
+          margin-top: 15%;
+      }
       }
     }
+  }
+  .bg-black{
+    background: black;
+    height: 100vh;
+  }
+  .sect-card{
+    width: 80vw;
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+  }
+  .rounded-circle{
+    width: 110px;
+    height: auto;
+  }
+  .margin-center{
+    margin: 0 auto;
   }

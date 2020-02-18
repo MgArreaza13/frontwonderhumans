@@ -1,34 +1,64 @@
-<div class="qr-scan-area">
-  <!-- This is the npm package in-charge of scanning the QR -->
-  <zxing-scanner
-    #scanner
-    [(device)]="currentDevice"
-    (scanSuccess)="onCodeResult($event)"
-    (permissionResponse)="onHasPermission($event)"
-  ></zxing-scanner>
-  <div class="qr-area">
-    <div class="area"></div>
-  </div>
-</div>
 
-<!-- Displays message on the screen if guest is valid or not -->
-<div class="guest">
-  <ng-container *ngIf="qrResult">
-    <div class="ui success message">
-      <i class="close icon"></i>
-      <div class="header">
-        Welcome!!
+<section class="section section-lg pt-lg-0 mt--200 bg-black">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="row row-grid">
+          <div class="qr-scan-area">
+            <!-- This is the npm package in-charge of scanning the QR -->
+            <zxing-scanner
+              #scanner
+              [(device)]="currentDevice"
+              (scanSuccess)="onCodeResult($event)"
+              (permissionResponse)="onHasPermission($event)"
+            ></zxing-scanner>
+            <div class="qr-area">
+              <div class="area"></div>
+            </div>
+          </div>
+          <section class="p-4 margin-center">
+            <div class="card sect-card" >            
+              <div class="row" *ngIf="qrResult">
+                <div class="col-4 d-flex align-items-center">
+                  <img src="https://f0.pngfuel.com/png/348/800/man-wearing-blue-shirt-illustration-png-clip-art.png" alt="..." class="rounded-circle">
+                </div>
+                <div class="col-8 ">
+                  <h5>Example title</h5>
+                  <small class="d-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit Incidunt.</small>
+                  <small>Consectetur adipisicing elit.</small>
+                  <a class="d-block text-info float-right mt-1 pr-1">Ver detalles</a>
+                </div>
+              </div>
+              <div class="row" #notFound *ngIf="qrResult === false">
+                <div class="col-12">
+                  <p class="text-lg text-center text-danger font-weight-bold">No hay datos registrados.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Displays message on the screen if guest is valid or not -->
+          <!-- <div class="guest">
+            <ng-container *ngIf="qrResult">
+              <div class="ui success message">
+                <i class="close icon"></i>
+                <div class="header">
+                  Welcome!!
+                </div>
+                <p>Guest has been found on the guest lists</p>
+              </div>
+            </ng-container>
+            <ng-container #notFound *ngIf="qrResult === false">
+              <div class="ui negative message">
+                <i class="close icon"></i>
+                <div class="header">
+                  Warning!
+                </div>
+                <p>This person is not a guest!</p>
+              </div>
+            </ng-container>
+          </div> -->
+        </div>
       </div>
-      <p>Guest has been found on the guest lists</p>
     </div>
-  </ng-container>
-  <ng-container #notFound *ngIf="qrResult === false">
-    <div class="ui negative message">
-      <i class="close icon"></i>
-      <div class="header">
-        Warning!
-      </div>
-      <p>This person is not a guest!</p>
-    </div>
-  </ng-container>
-</div>
+  </div>
+</section>
