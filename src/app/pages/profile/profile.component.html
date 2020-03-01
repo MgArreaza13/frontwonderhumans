@@ -32,8 +32,9 @@
             </div>
             <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
               <div class="card-profile-actions py-4 mt-lg-0">
-                <a href="javascript:void(0)" class="btn btn-sm btn-info mr-4">Connect</a>
-                <a href="javascript:void(0)" class="btn btn-sm btn-default float-right">Message</a>
+                <a [routerLink]="['/new-homeless']"class="btn btn-sm btn-info mr-4">Register new homeless</a>
+                <!-- <a href="javascript:void(0)" class="btn btn-sm btn-default ">Message</a> -->
+                <a [routerLink]="['/edit-profile']" class="btn btn-sm btn-warning float-right">Edit profile</a>
               </div>
             </div>
             <div class="col-lg-4 order-lg-1">
@@ -54,30 +55,35 @@
             </div>
           </div>
           <div class="text-center mt-5">
-            <h3>Jessica Jones
-              <span class="font-weight-light">, 27</span>
+            <h3>{{user.first_name}} {{user.last_name}}
             </h3>
-            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Bucharest, Romania</div>
-            <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+            <ng-container *ngIf="profile" >
+              <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{profile.phone}}</div>
+              <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{user.email}}</div>
+              <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{profile.country}}, {{profile.state}}, {{profile.city}}</div>
+            </ng-container>
+            <!-- <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
             </div>
-            <div><i class="ni education_hat mr-2"></i>University of Computer Science</div>
+            <div><i class="ni education_hat mr-2"></i>University of Computer Science</div> -->
+
+            <div *ngIf="!profile">
+              <a [routerLink]="['/edit-profile']" class="btn btn-lg btn-warning">Complete profile</a>
+            </div>
           </div>
-          <div class="mt-5 py-5 border-top text-center">
+          <div class="mt-5 py-5 border-top text-center" *ngIf="profile">
             <div class="row justify-content-center">
               <div class="col-lg-9">
-                <p>An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick
-                  Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a
-                  solid groove structure. An artist of considerable range.</p>
-                <a href="javascript:void(0)">Show more</a>
+                <p>{{profile.aboutYou}}</p>
+                <!-- <a href="javascript:void(0)">Show more</a> -->
               </div>
             </div>
             <div>
               <!-- PHOTOS -->
-              <section id="team" class="pb-5">
+              <section id="team" class="pb-5" *ngIf="userHomeless">
                 <div class="container">
                   <div class="row">
                     <!-- Photo -->
-                    <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let homeless of userHomeless" >
                       <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                         <div class="mainflip">
                           <div class="frontside">
@@ -86,8 +92,9 @@
                                 <p><img class=" img-fluid"
                                     src="https://images.unsplash.com/photo-1509059852496-f3822ae057bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1112&q=80"
                                     alt="card image"></p>
-                                <h4 class="card-title">Example Name</h4>
-                                <p class="card-text">"Lorem ipsum dolor sit amet consectetur, adipisici."</p>
+                                <h4 class="card-title">{{homeless.firstName}} {{homeless.lastName}}</h4>
+                                <p class="card-text">{{homeless.occupation}}</p>
+                                <p class="card-text">{{homeless.phone}}</p>
                                 <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
                               </div>
                             </div>
@@ -95,9 +102,12 @@
                           <div class="backside">
                             <div class="card">
                               <div class="card-body text-center mt-4">
-                                <h4 class="card-title">Example Name</h4>
-                                <p class="card-text">"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius,
-                                  obcaecati ullam fugiat accusantium similique veniam magni."</p>
+                                <h4 class="card-title">{{homeless.firstName}} {{homeless.lastName}}</h4>
+                                <p class="card-text">{{homeless.aboutYou}}</p>
+                                <div>
+                                  <a routerLink="/homeless-profile/{{homeless.id}}" class="btn btn-lg btn-warning">Ver profile</a>
+               
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -105,64 +115,7 @@
                       </div>
                     </div>
                     <!-- ./Photo -->
-                    <!-- Photo -->
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                      <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                        <div class="mainflip">
-                          <div class="frontside">
-                            <div class="card">
-                              <div class="card-body text-center">
-                                <p><img class=" img-fluid"
-                                    src="https://images.unsplash.com/photo-1509059852496-f3822ae057bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1112&q=80"
-                                    alt="card image"></p>
-                                <h4 class="card-title">Example Name</h4>
-                                <p class="card-text">"Lorem ipsum dolor sit amet consectetur, adipisici."</p>
-                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="backside">
-                            <div class="card">
-                              <div class="card-body text-center mt-4">
-                                <h4 class="card-title">Example Name</h4>
-                                <p class="card-text">"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius,
-                                  obcaecati ullam fugiat accusantium similique veniam magni."</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- ./Photo -->
-                    <!-- Photo -->
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                      <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                        <div class="mainflip">
-                          <div class="frontside">
-                            <div class="card">
-                              <div class="card-body text-center">
-                                <p><img class=" img-fluid"
-                                    src="https://images.unsplash.com/photo-1509059852496-f3822ae057bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1112&q=80"
-                                    alt="card image"></p>
-                                <h4 class="card-title">Example Name</h4>
-                                <p class="card-text">"Lorem ipsum dolor sit amet consectetur, adipisici."</p>
-                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="backside">
-                            <div class="card">
-                              <div class="card-body text-center mt-4">
-                                <h4 class="card-title">Example Name</h4>
-                                <p class="card-text">"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius,
-                                  obcaecati ullam fugiat accusantium similique veniam magni."</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- ./Photo -->
+
                   </div>
                 </div>
               </section>

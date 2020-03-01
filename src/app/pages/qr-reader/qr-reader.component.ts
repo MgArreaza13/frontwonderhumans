@@ -12,7 +12,7 @@ export class QrReaderComponent implements OnInit {
   currentDevice: MediaDeviceInfo = null;
   hasDevices: boolean;
   hasPermission: boolean;
-  qrResult: any = false;
+  qrResult: any = true;
   guestExist: boolean;
 
   constructor() {}
@@ -21,7 +21,7 @@ export class QrReaderComponent implements OnInit {
 
   //Clears the QR code scanned
   clearResult(): void {
-    this.qrResult = false;
+    this.qrResult = true;
   }
 
   //Scans the QR code

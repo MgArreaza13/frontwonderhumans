@@ -7,14 +7,25 @@ import { NewHomeless } from 'src/app/shared/models/newHomeless';
 
 @Injectable()
 export class HomelessService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   newHomeless(newH: NewHomeless) {
-    return this.http.post(`${ environment.apiRoot }/api/accounts/homelessProfile/`, newH);
+    return this.http.post(`${environment.apiRoot}/api/accounts/homelessProfile/`, newH);
   }
 
-  getHomelessProfile(id){
-    return this.http.get(`${ environment.apiRoot }/api/accounts/homelessProfile/${id}`,);
+  getHomelessProfile(id) {
+    return this.http.get(`${environment.apiRoot}/api/accounts/homelessProfile/${id}`);
   }
 
+  getCommentsProfile(id) {
+    return this.http.get(`${environment.apiRoot}/api/comments/get/${id}`);
+  }
+
+  getDonations(id){
+    return this.http.get(`${environment.apiRoot}/api/donations/get/${id}`);
+  }
+
+  getEventsDonations(id){
+    return this.http.get(`${environment.apiRoot}/api/donations/event/get/${id}`);
+  }
 }

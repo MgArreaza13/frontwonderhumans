@@ -11,11 +11,14 @@ import { Lightbox } from 'ngx-lightbox';
   styleUrls: ['./homeless-profile.component.scss']
 })
 export class HomelessProfileComponent implements OnInit {
+  eventsList: any;
+  donationsList: any;
   closeResult: string;
   private idHomeless;
   private homelessProfile;
   name = 'Angular';
   album: any = [];
+  comments;
   constructor(
     private modalService: NgbModal,
     private homelessService: HomelessService,
@@ -31,6 +34,9 @@ export class HomelessProfileComponent implements OnInit {
 
   ngOnInit() {
     this.getProfile(this.idHomeless);
+    this.getCommentsProfile(this.idHomeless);
+    this.getDonationsList(this.idHomeless);
+    this.getEventList(this.idHomeless);
   }
 
   open(classic) {
@@ -59,11 +65,48 @@ export class HomelessProfileComponent implements OnInit {
     )
   }
 
+
+  getCommentsProfile(id: number) {
+    this.homelessService.getCommentsProfile(id).subscribe(
+      (data)=>{
+        console.log(data);
+        this.comments = data;
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
   openM(index: number): void {
     this._lightbox.open(this.album, index);
   }
 
   close(): void {
     this._lightbox.close();
+  }
+
+
+
+  getDonationsList(id) {
+    this.homelessService.getDonations(id).subscribe(
+      (data:any) => {
+        this.donationsList = data;
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  getEventList(id) {
+    this.homelessService.getEventsDonations(id).subscribe(
+      (data:any) => {
+        this.eventsList = data;
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 }

@@ -4,6 +4,8 @@ import { User } from 'src/app/shared/models/user';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 @Component({
     selector: 'app-signup',
     templateUrl: './signup.component.html',
@@ -21,6 +23,8 @@ export class SignupComponent implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private authService: AuthService,
+        private spinner: NgxSpinnerService,
+        private toastr: ToastrService,
         private lsService: LocalStorageService,
         private router: Router) { }
 
@@ -61,8 +65,10 @@ export class SignupComponent implements OnInit {
     get f() { return this.registerForm.controls; }
 
     onSubmit() {
+        this.spinner.show();
         this.submitted = true;
         if (this.registerForm.invalid) {
+            this.spinner.hide();
             return;
         }
 
@@ -77,9 +83,11 @@ export class SignupComponent implements OnInit {
         // Send request
         this.authService.register(this.user).subscribe(
             (data: any) => {
+                this.spinner.hide();
+                this.toastr.success('Welcome', 'Register success');
                 this.router.navigateByUrl('/login')
             },
-            err => { console.log(err);}
+            err => { console.log(err); this.toastr.error('Error', err.error.detail); this.spinner.hide(); }
         );
     }
 
