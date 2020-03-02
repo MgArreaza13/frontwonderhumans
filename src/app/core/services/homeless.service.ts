@@ -28,4 +28,8 @@ export class HomelessService {
   getEventsDonations(id){
     return this.http.get(`${environment.apiRoot}/api/donations/event/get/${id}`);
   }
+
+  getPortfolio(id){
+    return this.http.get(`${environment.apiRoot}/api/portfolio/get/${id}`);
+  }
 }

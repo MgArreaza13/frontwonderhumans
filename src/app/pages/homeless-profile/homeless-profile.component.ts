@@ -11,6 +11,7 @@ import { Lightbox } from 'ngx-lightbox';
   styleUrls: ['./homeless-profile.component.scss']
 })
 export class HomelessProfileComponent implements OnInit {
+  portfolio: any;
   eventsList: any;
   donationsList: any;
   closeResult: string;
@@ -37,6 +38,7 @@ export class HomelessProfileComponent implements OnInit {
     this.getCommentsProfile(this.idHomeless);
     this.getDonationsList(this.idHomeless);
     this.getEventList(this.idHomeless);
+    this.getPortfolioList(this.idHomeless);
   }
 
   open(classic) {
@@ -78,8 +80,8 @@ export class HomelessProfileComponent implements OnInit {
     )
   }
 
-  openM(index: number): void {
-    this._lightbox.open(this.album, index);
+  openM(url): void {
+    // this._lightbox.open(`http://localhost:8000${url}`);
   }
 
   close(): void {
@@ -103,6 +105,17 @@ export class HomelessProfileComponent implements OnInit {
     this.homelessService.getEventsDonations(id).subscribe(
       (data:any) => {
         this.eventsList = data;
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  getPortfolioList(id) {
+    this.homelessService.getPortfolio(id).subscribe(
+      (data:any) => {
+        this.portfolio = data;
       },
       error => {
         console.log(error);
