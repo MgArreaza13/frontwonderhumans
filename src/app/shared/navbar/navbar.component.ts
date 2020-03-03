@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Location, PopStateEvent } from '@angular/common';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-navbar',
@@ -9,6 +10,7 @@ import { LocalStorageService } from 'src/app/core/services/local-storage.service
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  modalRef: BsModalRef;
   public isCollapsed = true;
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
@@ -19,7 +21,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     public location: Location,
     private router: Router,
-    private lsService: LocalStorageService) {
+    private lsService: LocalStorageService,
+    private modalService: BsModalService) {
   }
 
   ngOnInit() {
@@ -59,5 +62,8 @@ export class NavbarComponent implements OnInit {
     else {
       return false;
     }
+  }
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 }

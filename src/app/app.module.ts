@@ -28,6 +28,9 @@ import { EditProfileComponent } from './pages/edit-profile/edit-profile.componen
 import { HomelessProfileComponent } from './pages/homeless-profile/homeless-profile.component';
 import { LightboxModule } from 'ngx-lightbox';
 import { QrReaderComponent } from './pages/qr-reader/qr-reader.component';
+import { SidebarModule } from 'ng-sidebar';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { FileUploadModule } from '@iplab/ngx-file-upload';
 
 
 @NgModule({
@@ -61,6 +64,9 @@ import { QrReaderComponent } from './pages/qr-reader/qr-reader.component';
     HomeModule,
     AppRoutingModule,
     LightboxModule,
+    SidebarModule.forRoot(),
+    ModalModule.forRoot(),
+    FileUploadModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,9 @@
 import { HomelessService } from './../../core/services/homeless.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Lightbox } from 'ngx-lightbox';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { Lightbox } from 'ngx-lightbox';
   styleUrls: ['./homeless-profile.component.scss']
 })
 export class HomelessProfileComponent implements OnInit {
+  modalRef: BsModalRef;
   portfolio: any;
   eventsList: any;
   donationsList: any;
@@ -25,6 +27,7 @@ export class HomelessProfileComponent implements OnInit {
     private homelessService: HomelessService,
     private route: ActivatedRoute,
     private _lightbox: Lightbox,
+    private bmodalService: BsModalService
   ) {
     this.idHomeless = this.route.snapshot.paramMap.get('idHomeless');
     this.album.push({ 'src': 'https://images.unsplash.com/photo-1581501171910-a6394cff12b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', 'caption': 'Imag1', 'thumb': 'https://images.unsplash.com/photo-1581501171910-a6394cff12b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80' });
@@ -120,6 +123,9 @@ export class HomelessProfileComponent implements OnInit {
       error => {
         console.log(error);
       }
-    )
+    );
+  }
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.bmodalService.show(template);
   }
 }

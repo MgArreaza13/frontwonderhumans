@@ -14,6 +14,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-8">
           <div class="card bg-secondary shadow border-0">
+            <button (click)="openModal(template)" id="add-event-btn" type="button" class="btn btn-outline-success btn-sm float-right"><i class="ni ni-fat-add"></i> Add event</button>
             <div class="card-header bg-white pb-2">
               <div class="text-muted text-center mb-3">
                 <small>Homeless Profile</small>
@@ -58,6 +59,13 @@
                         </div>
                       </div>
                       <!-- end comments -->
+                      <!-- comments box -->
+                      <div class="row">
+                        <div class="col-12">
+                          <textarea name="comentarios" rows="5" id="text-comments">Write your comments</textarea>
+                          <button type="button" class="btn btn-success float-right">Send</button>
+                        </div>
+                      </div>
                     </ng-template>
                   </ngb-tab>
                   <ngb-tab>
@@ -171,10 +179,10 @@
             <ng-template ngbTabContent *ngIf="eventsList" >
               <div class="row">
                 <div class="col-6">
-                  <ngb-tabset type="pills" class="nav-pills-circle" id="pillsCustom">
+                  <ngb-tabset type="pills" id="pillsCustom">
                     <ngb-tab *ngFor="let event of eventsList" >
                       <ng-template ngbTabTitle>
-                        <span class="nav-link-icon d-block"><i class="ni ni-satisfied"></i>{{event.name}}</span>
+                        <span class="nav-link-icon d-block"><i class="ni ni-support-16"></i> {{event.name}}</span>
                       </ng-template>
                     </ngb-tab>
                   </ngb-tabset>
@@ -219,5 +227,27 @@
       </div>
     </div>
   </ng-template>
-
+  
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Add Event</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label >Name of event</label>
+          <input type="text" class="form-control" aria-describedby="nameevent" placeholder="Enter name event">
+          <small id="nameevent" class="form-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
+        </div>
+        <div class="form-group">
+          <label>Mount</label>
+          <input type="number" class="form-control" placeholder="$ 00,00">
+        </div>        
+        <button type="submit" class="btn btn-success float-right">Submit</button>
+      </form>
+    </div>
+  </ng-template>
 </main>

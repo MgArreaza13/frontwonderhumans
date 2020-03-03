@@ -31,7 +31,7 @@
               </div>
             </div>
             <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-              <div class="card-profile-actions py-4 mt-lg-0">
+              <div class="card-profile-actions py-4 mt-lg-0 d-flex">
                 <a [routerLink]="['/new-homeless']"class="btn btn-sm btn-info mr-4">Register new homeless</a>
                 <!-- <a href="javascript:void(0)" class="btn btn-sm btn-default ">Message</a> -->
                 <a [routerLink]="['/edit-profile']" class="btn btn-sm btn-warning float-right">Edit profile</a>
@@ -105,7 +105,7 @@
                                 <h4 class="card-title">{{homeless.firstName}} {{homeless.lastName}}</h4>
                                 <p class="card-text">{{homeless.aboutYou}}</p>
                                 <div>
-                                  <a routerLink="/homeless-profile/{{homeless.id}}" class="btn btn-lg btn-warning">Ver profile</a>
+                                  <a routerLink="/homeless-profile/{{homeless.id}}" class="btn btn-sm btn-warning">Ver profile</a>
                
                                 </div>
                               </div>

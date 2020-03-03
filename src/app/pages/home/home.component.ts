@@ -20,15 +20,4 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {}
 
-  detectChange($event: any) {
-    this.toggleSidebar = $event;
-  }
-
-  toggle() {
-    switch (this.toggleSidebar) {
-      case 'none': this.toggleSidebar = 'show'; break;
-      case 'show': this.toggleSidebar = 'none'; break;
-      default: this.toggleSidebar = 'show'; break;
-    }
-  }
 }

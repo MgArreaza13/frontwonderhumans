@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NewHomeless } from 'src/app/shared/models/newHomeless';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { FileUploadControl, FileUploadValidators } from '@iplab/ngx-file-upload';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./new-homeless.component.scss']
 })
 export class NewHomelessComponent implements OnInit {
-
+  public fileUploadControl = new FileUploadControl(FileUploadValidators.filesLimit(2));
   public newHomelessForm: FormGroup;
   public newHomeless: NewHomeless = {};
   public submitted = false;

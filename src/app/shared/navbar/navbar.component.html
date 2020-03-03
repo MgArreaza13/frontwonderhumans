@@ -1,15 +1,18 @@
-<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned">
+<nav id="navbar-main"
+  class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned">
   <div class="container">
-    <a class="navbar-brand mr-lg-5" [routerLink]="['/landing']">
+    <a class="navbar-brand mr-lg-5 d-flex" [routerLink]="['/landing']">
       <img src="./assets/img/logo/WH-Logo-White.png">
-      <h4 style="color: white; font-weight: bold;">WonderHumans</h4>
+      <h4 style="color: white; font-weight: bold;margin-left: 10px;">WonderHumans</h4>
     </a>
-    
+    <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button> -->
+
+
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
-          [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+      [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-collapse collapse" id="navbar_global" [ngbCollapse]="isCollapsed">
+    <div class="navbar-collapse collapse" [ngbCollapse]="isCollapsed">
       <div class="navbar-collapse-header">
         <div class="row">
           <div class="col-6 collapse-brand">
@@ -19,15 +22,15 @@
           </div>
           <div class="col-6 collapse-close">
             <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
-                  [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+              [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
               <span></span>
               <span></span>
             </button>
           </div>
         </div>
       </div>
-      <!-- <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-        <li class="nav-item dropdown">
+      <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link no-caret" data-toggle="dropdown" role="button">
             <i class="ni ni-ui-04 d-lg-none"></i>
             <span class="nav-link-inner--text">Components</span>
@@ -63,60 +66,46 @@
               </a>
             </div>
           </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
-            <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Examples</span>
+        </li> -->
+        <li class="nav-item dropdown" *ngIf="!user">
+          <a class="nav-link " role="button" [routerLink]="['/login']">            
+            <span class="nav-link-inner--text">Login</span>
           </a>
-          <div class="dropdown-menu">
-            <a [routerLink]="['/landing']" class="dropdown-item">Landing</a>
-            <a [routerLink]="['/user-profile']" class="dropdown-item">Profile</a>
-            <a [routerLink]="['/login']" class="dropdown-item">Login</a>
-            <a [routerLink]="['/register']" class="dropdown-item">Register</a>
-          </div>
+
         </li>
-      </ul> -->
-      <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-        <li class="nav-item" *ngIf="!user" >
-          <a class="nav-link nav-link-icon" [routerLink]="['/login']" data-toggle="tooltip" >
-            <span class="nav-link-inner--text d-lg-none">Login</span>
+        <li class="nav-item dropdown" *ngIf="user">
+          <a class="nav-link " role="button" [routerLink]="['/user-profile']">            
+            <span class="nav-link-inner--text">Profile</span>
           </a>
+
         </li>
-        <li class="nav-item" *ngIf="user">
-          <a class="nav-link nav-link-icon" [routerLink]="['/user-profile']" data-toggle="tooltip" >
-            <span class="nav-link-inner--text d-lg-none">Profile</span>
+        <li class="nav-item dropdown" *ngIf="user">
+          <a class="nav-link " role="button" [routerLink]="['/new-homeless']">            
+            <span class="nav-link-inner--text">New Register Homeless</span>
           </a>
+
         </li>
-        <li class="nav-item" *ngIf="user">
-          <a class="nav-link nav-link-icon" [routerLink]="['/new-homeless']" data-toggle="tooltip" >
-            <span class="nav-link-inner--text d-lg-none">New Register Homeless</span>
+        <li class="nav-item dropdown" *ngIf="!user">
+          <a class="nav-link " role="button" [routerLink]="['/register']">            
+            <span class="nav-link-inner--text">Register</span>
           </a>
         </li>
-        <li class="nav-item" *ngIf="!user">
-          <a class="nav-link nav-link-icon" [routerLink]="['/register']" data-toggle="tooltip" >
-            <span class="nav-link-inner--text d-lg-none">Register</span>
-          </a>
-        </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link nav-link-icon"  target="_blank" data-toggle="tooltip" >
-            <i class="fa fa-instagram"></i>
-            <span class="nav-link-inner--text d-lg-none">Instagram</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-link-icon"  target="_blank" data-toggle="tooltip" >
-            <i class="fa fa-twitter-square"></i>
-            <span class="nav-link-inner--text d-lg-none">Twitter</span>
-          </a>
-        </li>  -->
-        <li *ngIf="user"  class="nav-item" >
-          <button class="nav-link nav-link-icon btn btn-icon btn-3 btn-secondary btn-sm" type="button" placement="bottom" ngbTooltip="Cerrar Sesión" style="padding: 0;
-          color: brown;">
-            <span class="btn-inner--text"><i class="ni ni-button-power">Logout</i></span>
-          </button>
-       </li>   
+
       </ul>
-    </div> 
+      <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+        <li class="nav-item" *ngIf="user">
+          <a class="nav-link nav-link-icon" [routerLink]="['/qr-reader']" data-toggle="tooltip">
+            <span class="nav-link-inner--text d-lg-none">QR READER</span>
+          </a>
+        </li>
+        <li *ngIf="user" class="nav-item">
+          <button class="nav-link nav-link-icon btn btn-icon btn-3 btn-secondary btn-sm" type="button"
+            placement="bottom" ngbTooltip="Cerrar Sesión" style="padding: 0;
+                          color: brown;font-size: small;">
+            <span class="btn-inner--text">Logout <i class="ni ni-button-power"></i></span>
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

@@ -87,6 +87,7 @@ section .section-title {
     -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
     -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
     box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+    width: 100%;
 }
 
 .frontside,
@@ -109,12 +110,12 @@ section .section-title {
 
 .frontside .card,
 .backside .card {
-    min-height: 312px;
+    min-height: 354px;
 }
 
 .backside .card a {
     font-size: 18px;
-    color: #F44336 !important;
+    color: #ffffff!important;
 }
 
 .frontside .card .card-title,

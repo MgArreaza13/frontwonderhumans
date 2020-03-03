@@ -8,7 +8,6 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 
 import { SectionsModule } from '../../sections/sections.module';
-import { SidebarComponent } from '../../shared/sidebar/sidebar.component';
 
 @NgModule({
     imports: [
@@ -18,7 +17,7 @@ import { SidebarComponent } from '../../shared/sidebar/sidebar.component';
         RouterModule,
         SectionsModule
     ],
-    declarations: [ HomeComponent, SidebarComponent ],
+    declarations: [ HomeComponent ],
     exports:[ HomeComponent ],
     providers: []
 })
