@@ -62,8 +62,8 @@
                       <!-- comments box -->
                       <div class="row">
                         <div class="col-12">
-                          <textarea name="comentarios" rows="5" id="text-comments">Write your comments</textarea>
-                          <button type="button" class="btn btn-success float-right">Send</button>
+                          <textarea name="comentarios" [(ngModel)]="comment" rows="5" id="text-comments" placeholder="Write your comments"></textarea>
+                          <button type="button" [disabled]="ifSendComment" (click)="newComment()"   class="btn btn-success float-right">Send</button>
                         </div>
                       </div>
                     </ng-template>

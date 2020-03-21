@@ -32,4 +32,9 @@ export class HomelessService {
   getPortfolio(id){
     return this.http.get(`${environment.apiRoot}/api/portfolio/get/${id}`);
   }
+
+
+  newComment(id, comment) {
+    return this.http.post(`${environment.apiRoot}/api/comments/new/${id}`, comment);
+  }
 }

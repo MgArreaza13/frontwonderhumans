@@ -17,6 +17,8 @@ export class HomelessProfileComponent implements OnInit {
   eventsList: any;
   donationsList: any;
   closeResult: string;
+  comment;
+  ifSendComment = false;
   private idHomeless;
   private homelessProfile;
   name = 'Angular';
@@ -127,5 +129,31 @@ export class HomelessProfileComponent implements OnInit {
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.bmodalService.show(template);
+  }
+
+
+  newComment(){
+    this.createComment(this.idHomeless);
+  }
+
+  createComment(id){
+    const body = {
+      comment: this.comment
+    }
+    this.ifSendComment = true;
+    
+    this.homelessService.newComment(id, body).subscribe(
+      (data:any)=>{
+        console.log(data);
+        this.ifSendComment = false;
+        this.comment = '';
+        this.comments = data;
+      },
+      error => {
+        this.ifSendComment = false;
+        console.log(error);
+      }
+    )
+
   }
 }
