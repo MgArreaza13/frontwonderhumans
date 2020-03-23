@@ -37,4 +37,8 @@ export class HomelessService {
   newComment(id, comment) {
     return this.http.post(`${environment.apiRoot}/api/comments/new/${id}`, comment);
   }
+
+  newEvent(id, event) {
+    return this.http.post(`${environment.apiRoot}/api/donations/event/new/${id}`, event);
+  }
 }

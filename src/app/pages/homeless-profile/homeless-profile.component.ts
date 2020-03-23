@@ -21,7 +21,9 @@ export class HomelessProfileComponent implements OnInit {
   ifSendComment = false;
   private idHomeless;
   private homelessProfile;
-  name = 'Angular';
+  name;
+  total;
+  description;
   album: any = [];
   comments;
   constructor(
@@ -49,6 +51,7 @@ export class HomelessProfileComponent implements OnInit {
   open(classic) {
     this.modalService.open(classic, { size: 'lg', centered: true });
   }
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -75,7 +78,7 @@ export class HomelessProfileComponent implements OnInit {
 
   getCommentsProfile(id: number) {
     this.homelessService.getCommentsProfile(id).subscribe(
-      (data)=>{
+      (data) => {
         console.log(data);
         this.comments = data;
       },
@@ -97,7 +100,7 @@ export class HomelessProfileComponent implements OnInit {
 
   getDonationsList(id) {
     this.homelessService.getDonations(id).subscribe(
-      (data:any) => {
+      (data: any) => {
         this.donationsList = data;
       },
       error => {
@@ -108,7 +111,7 @@ export class HomelessProfileComponent implements OnInit {
 
   getEventList(id) {
     this.homelessService.getEventsDonations(id).subscribe(
-      (data:any) => {
+      (data: any) => {
         this.eventsList = data;
       },
       error => {
@@ -119,7 +122,7 @@ export class HomelessProfileComponent implements OnInit {
 
   getPortfolioList(id) {
     this.homelessService.getPortfolio(id).subscribe(
-      (data:any) => {
+      (data: any) => {
         this.portfolio = data;
       },
       error => {
@@ -131,19 +134,18 @@ export class HomelessProfileComponent implements OnInit {
     this.modalRef = this.bmodalService.show(template);
   }
 
-
-  newComment(){
+  newComment() {
     this.createComment(this.idHomeless);
   }
 
-  createComment(id){
+  createComment(id) {
     const body = {
       comment: this.comment
     }
     this.ifSendComment = true;
-    
+
     this.homelessService.newComment(id, body).subscribe(
-      (data:any)=>{
+      (data: any) => {
         console.log(data);
         this.ifSendComment = false;
         this.comment = '';
@@ -155,5 +157,33 @@ export class HomelessProfileComponent implements OnInit {
       }
     )
 
+  }
+
+  newEvent() {
+    this.createEvent(this.idHomeless);
+  }
+
+  createEvent(id) {
+    const body = {
+      name: this.name,
+      total: this.total,
+      description: this.description,
+    };
+    console.log(body);
+    this.homelessService.newEvent(id, body).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.closemodal();
+
+
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  closemodal() {
+    this.modalRef.hide();
   }
 }

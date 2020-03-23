@@ -14,7 +14,8 @@
       <div class="row justify-content-center">
         <div class="col-lg-8">
           <div class="card bg-secondary shadow border-0">
-            <button (click)="openModal(template)" id="add-event-btn" type="button" class="btn btn-outline-success btn-sm float-right"><i class="ni ni-fat-add"></i> Add event</button>
+            <button (click)="openModal(template)" id="add-event-btn" type="button"
+              class="btn btn-outline-success btn-sm float-right"><i class="ni ni-fat-add"></i> Add event</button>
             <div class="card-header bg-white pb-2">
               <div class="text-muted text-center mb-3">
                 <small>Homeless Profile</small>
@@ -29,12 +30,17 @@
               <div class="col-12">
                 <!-- Tabs with icons -->
                 <div class="mb-3">
-                  <h5 class="text-uppercase font-weight-bold text-center">{{homelessProfile?.firstName}} {{homelessProfile?.lastName}}</h5>
-                  <small *ngIf="homelessProfile?.email" class="font-weight-bold text-center d-block">Email: {{homelessProfile?.email}}</small>
-                  <small *ngIf="homelessProfile?.phone"  class="font-weight-bold text-center d-block">Phone Number: {{homelessProfile?.phone}}</small>
-                  <small *ngIf="homelessProfile?.dateOfBirth"  class="font-weight-bold text-center d-block">Date of Birth: {{homelessProfile?.dateOfBirth | date}}</small>
-                  <small *ngIf="homelessProfile?.occupation"  class="font-weight-bold text-center d-block">Occupation: {{homelessProfile?.occupation}}</small>
-                
+                  <h5 class="text-uppercase font-weight-bold text-center">{{homelessProfile?.firstName}}
+                    {{homelessProfile?.lastName}}</h5>
+                  <small *ngIf="homelessProfile?.email" class="font-weight-bold text-center d-block">Email:
+                    {{homelessProfile?.email}}</small>
+                  <small *ngIf="homelessProfile?.phone" class="font-weight-bold text-center d-block">Phone Number:
+                    {{homelessProfile?.phone}}</small>
+                  <small *ngIf="homelessProfile?.dateOfBirth" class="font-weight-bold text-center d-block">Date of
+                    Birth: {{homelessProfile?.dateOfBirth | date}}</small>
+                  <small *ngIf="homelessProfile?.occupation" class="font-weight-bold text-center d-block">Occupation:
+                    {{homelessProfile?.occupation}}</small>
+
                 </div>
                 <ngb-tabset [justify]="'center'" class="custom-tab-content flex-column flex-md-row" type="pills"
                   id="navCustom2">
@@ -45,7 +51,7 @@
                     <ng-template ngbTabContent>
                       <p class="description">{{homelessProfile?.aboutYou}}</p>
                       <!-- comments -->
-                      <div class="review p-3" *ngFor="let comment of comments" >
+                      <div class="review p-3" *ngFor="let comment of comments">
                         <div class="row d-flex">
                           <div class="profile-pic"><img src="https://i.imgur.com/Mcd6HIg.jpg" width="60px"
                               height="60px"></div>
@@ -62,8 +68,10 @@
                       <!-- comments box -->
                       <div class="row">
                         <div class="col-12">
-                          <textarea name="comentarios" [(ngModel)]="comment" rows="5" id="text-comments" placeholder="Write your comments"></textarea>
-                          <button type="button" [disabled]="ifSendComment" (click)="newComment()"   class="btn btn-success float-right">Send</button>
+                          <textarea name="comentarios" [(ngModel)]="comment" rows="5" id="text-comments"
+                            placeholder="Write your comments"></textarea>
+                          <button type="button" [disabled]="ifSendComment" (click)="newComment()"
+                            class="btn btn-success float-right">Send</button>
                         </div>
                       </div>
                     </ng-template>
@@ -76,10 +84,11 @@
                       <div class="row">
                         <h3 class="text-center w-100">Portfolio</h3>
                       </div>
-                      <div class="row">                        
+                      <div class="row">
                         <div class="col-sm" *ngFor="let image of portfolio; let i=index">
-                        <img src="http://localhost:8000{{image.image}}" (click)="openM(image.image)" class="img-portfolio"/>
-                        </div>                        
+                          <img src="http://localhost:8000{{image.image}}" (click)="openM(image.image)"
+                            class="img-portfolio" />
+                        </div>
                       </div>
                     </ng-template>
                   </ngb-tab>
@@ -89,7 +98,7 @@
                     </ng-template>
                     <ng-template ngbTabContent>
                       <p class="description">{{homelessProfile?.aboutYou}}</p>
-                        <button class="btn btn-warning float-right" (click)="open(classic)">Show more</button>
+                      <button class="btn btn-warning float-right" (click)="open(classic)">Show more</button>
                     </ng-template>
                   </ngb-tab>
                 </ngb-tabset>
@@ -139,8 +148,8 @@
                       <th scope="col"></th>
                     </tr>
                   </thead>
-                  <tbody *ngIf="donationsList" >
-                    <tr *ngFor="let item of donationsList" >
+                  <tbody *ngIf="donationsList">
+                    <tr *ngFor="let item of donationsList">
                       <th scope="row">
                         <div class="media align-items-center">
                           <a href="#" class="avatar rounded-circle mr-3">
@@ -176,11 +185,11 @@
             <ng-template ngbTabTitle>
               <i class="ni ni-credit-card mr-2"></i> Donación
             </ng-template>
-            <ng-template ngbTabContent *ngIf="eventsList" >
+            <ng-template ngbTabContent *ngIf="eventsList">
               <div class="row">
                 <div class="col-6">
                   <ngb-tabset type="pills" id="pillsCustom">
-                    <ngb-tab *ngFor="let event of eventsList" >
+                    <ngb-tab *ngFor="let event of eventsList">
                       <ng-template ngbTabTitle>
                         <span class="nav-link-icon d-block"><i class="ni ni-support-16"></i> {{event.name}}</span>
                       </ng-template>
@@ -227,7 +236,7 @@
       </div>
     </div>
   </ng-template>
-  
+
   <ng-template #template>
     <div class="modal-header">
       <h4 class="modal-title pull-left">Add Event</h4>
@@ -236,18 +245,25 @@
       </button>
     </div>
     <div class="modal-body">
-      <form>
-        <div class="form-group">
-          <label >Name of event</label>
-          <input type="text" class="form-control" aria-describedby="nameevent" placeholder="Enter name event">
-          <small id="nameevent" class="form-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
-        </div>
-        <div class="form-group">
-          <label>Mount</label>
-          <input type="number" class="form-control" placeholder="$ 00,00">
-        </div>        
-        <button type="submit" class="btn btn-success float-right">Submit</button>
-      </form>
+
+      <div class="form-group">
+        <label>Name of event</label>
+        <input type="text" class="form-control" aria-describedby="nameevent" placeholder="Enter name event"
+          [(ngModel)]="name">
+        <small id="nameevent" class="form-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing
+          elit.</small>
+      </div>
+      <div class="form-group">
+        <label>Mount</label>
+        <input type="number" class="form-control" placeholder="$ 00,00" [(ngModel)]="total">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea name="" id="" cols="30" rows="4" class="form-control" placeholder="Description"
+          [(ngModel)]="description"></textarea>
+      </div>
+      <button class="btn btn-success float-right" (click)="newEvent()">Submit</button>
+
     </div>
   </ng-template>
 </main>
