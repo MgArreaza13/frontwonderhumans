@@ -31,8 +31,7 @@ import { QrReaderComponent } from './pages/qr-reader/qr-reader.component';
 import { SidebarModule } from 'ng-sidebar';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FileUploadModule } from '@iplab/ngx-file-upload';
-
-
+import { NgxStripeModule } from '@nomadreservations/ngx-stripe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +66,7 @@ import { FileUploadModule } from '@iplab/ngx-file-upload';
     SidebarModule.forRoot(),
     ModalModule.forRoot(),
     FileUploadModule,
+    NgxStripeModule.forRoot('pk_test_HvwgwPUBp4MDNtNzAblZKClz00L9KZljOT'),
   ],
   providers: [],
   bootstrap: [AppComponent]

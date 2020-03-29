@@ -57,7 +57,7 @@ export class EditProfileComponent implements OnInit {
       firstName: [(dataUser) ? dataUser.user.first_name : this.user.first_name, [
         Validators.required,
       ]],
-      lastName: [(dataUser) ? dataUser.user.last_name : this.user.first_name, [
+      lastName: [(dataUser) ? dataUser.user.last_name : this.user.last_name, [
         Validators.required,
       ]],
       email: [(dataUser) ? dataUser.user.email : this.user.email, [
@@ -87,10 +87,10 @@ export class EditProfileComponent implements OnInit {
   onSubmit() {
     this.spinner.show();
     this.submitted = true;
-    if (this.profileForm.invalid) {
-      this.spinner.hide();
-      return;
-    }
+    // if (this.profileForm.invalid) {
+    //   this.spinner.hide();
+    //   return;
+    // }
 
     // Set object
     this.profile.firstName = this.profileForm.get('firstName').value;

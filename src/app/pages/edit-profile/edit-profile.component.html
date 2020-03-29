@@ -32,7 +32,7 @@
             </div>
 
           </div>
-          <form *ngIf="profileForm" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+          <form *ngIf="profileForm" [formGroup]="profileForm" (ngSubmit)="onSubmit()" >
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
@@ -65,7 +65,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-birthday"></i></span>
                     </div>
-                    <input formControlName="dateOfBirth" class="form-control form-control-alternative" placeholder="Ex: 24/08/1990" type="text">
+                    <input formControlName="dateOfBirth" class="form-control form-control-alternative datepicker" placeholder="Ex: 24/08/1990" type="text" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
                   </div>
                 </div>
               </div>
@@ -122,7 +122,7 @@
                 placeholder="Write something here"></textarea>
             </div>
             <div class="row mt-5 mb-5 float-right">
-              <button type="submit" class="btn btn-success">Guardar</button>
+              <button type="submit" class="btn btn-success" (click)="onSubmit()">Guardar</button>
             </div>
           </form>
         </div>

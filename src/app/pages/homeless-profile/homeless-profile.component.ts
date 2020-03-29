@@ -4,6 +4,9 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Lightbox } from 'ngx-lightbox';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+
+import { StripeService, StripeCardComponent, Element as StripeElement, ElementOptions, ElementsOptions } from "@nomadreservations/ngx-stripe";
 
 
 @Component({
@@ -12,6 +15,29 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ['./homeless-profile.component.scss']
 })
 export class HomelessProfileComponent implements OnInit {
+  stripeKey = '';
+  error: any;
+  complete = false;
+  element: StripeElement;
+  cardOptions: ElementOptions = {
+    style: {
+      base: {
+        iconColor: 'red',
+        color: 'gray',
+        lineHeight: '40px',
+        fontWeight: 500,
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSize: '18px',
+        '::placeholder': {
+          color: '#CFD7E0'
+        }
+      }
+    }
+  };
+
+  elementsOptions: ElementsOptions = {
+    locale: 'en'
+  };
   modalRef: BsModalRef;
   portfolio: any;
   eventsList: any;
@@ -31,7 +57,8 @@ export class HomelessProfileComponent implements OnInit {
     private homelessService: HomelessService,
     private route: ActivatedRoute,
     private _lightbox: Lightbox,
-    private bmodalService: BsModalService
+    private bmodalService: BsModalService,
+    private _stripe: StripeService
   ) {
     this.idHomeless = this.route.snapshot.paramMap.get('idHomeless');
     this.album.push({ 'src': 'https://images.unsplash.com/photo-1581501171910-a6394cff12b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80', 'caption': 'Imag1', 'thumb': 'https://images.unsplash.com/photo-1581501171910-a6394cff12b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80' });
@@ -48,6 +75,30 @@ export class HomelessProfileComponent implements OnInit {
     this.getPortfolioList(this.idHomeless);
   }
 
+  cardUpdated(result) {
+    this.element = result.element;
+    this.complete = result.card.complete;
+    this.error = undefined;
+  }
+
+  keyUpdated() {
+    this._stripe.changeKey(this.stripeKey);
+  }
+
+  getCardToken() {
+    this._stripe.createToken(this.element, {
+      name: 'tested_ca',
+      address_line1: '123 A Place',
+      address_line2: 'Suite 100',
+      address_city: 'Irving',
+      address_state: 'BC',
+      address_zip: 'VOE 1H0',
+      address_country: 'CA'
+    }).subscribe(result => {
+      // Pass token to service for purchase.
+      console.log(result);
+    });
+  }
   open(classic) {
     this.modalService.open(classic, { size: 'lg', centered: true });
   }
