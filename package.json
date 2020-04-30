@@ -29,7 +29,7 @@
     "@zxing/ngx-scanner": "^3.0.0",
     "bootstrap": "^4.4.1",
     "file-upload-with-preview": "^4.0.8",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jw-bootstrap-switch-ng2": "2.0.5",
     "moment": "^2.24.0",
     "ng-sidebar": "^9.2.0",
