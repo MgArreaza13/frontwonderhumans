@@ -31,7 +31,7 @@
     "file-upload-with-preview": "^4.0.8",
     "jquery": "^3.4.1",
     "jw-bootstrap-switch-ng2": "2.0.5",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "ng-sidebar": "^9.2.0",
     "ng2-nouislider": "1.7.13",
     "ngx-bootstrap": "^5.5.0",
